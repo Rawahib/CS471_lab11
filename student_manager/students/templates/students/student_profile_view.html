@@ -1,0 +1,39 @@
+{% extends 'students/base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-4">
+        <div class="card">
+            {% if profile.profile_picture %}
+                <img src="{{ profile.profile_picture.url }}" class="card-img-top" alt="{{ student }} profile picture">
+            {% else %}
+                <div class="text-center p-5 bg-light">No profile picture</div>
+            {% endif %}
+            <div class="card-body">
+                <h5 class="card-title">{{ student }}</h5>
+                <p class="card-text">{{ profile.bio }}</p>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><strong>Email:</strong> {{ student.email }}</li>
+                    <li class="list-group-item"><strong>Date of Birth:</strong> {{ student.date_of_birth }}</li>
+                    {% if profile.graduation_year %}
+                        <li class="list-group-item"><strong>Graduation Year:</strong> {{ profile.graduation_year }}</li>
+                    {% endif %}
+                </ul>
+            </div>
+            <div class="card-footer">
+                <a href="{% url 'student_profile_update' student.id %}" class="btn btn-warning">Edit Profile</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h5>Address Information</h5>
+            </div>
+            <div class="card-body">
+                <p class="card-text">{{ student.address }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

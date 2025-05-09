@@ -1,0 +1,12 @@
+{% extends 'students/base.html' %}
+
+{% block content %}
+<div class="alert alert-info">
+    <h4>No Profile Found</h4>
+    <p>This student doesn't have a profile yet. Would you like to create one?</p>
+    <div>
+        <a href="{% url 'student_profile_create' student.id %}" class="btn btn-primary">Create Profile</a>
+        <a href="{% url 'student_list' %}" class="btn btn-secondary">Back to List</a>
+    </div>
+</div>
+{% endblock %}
